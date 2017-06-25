@@ -16,14 +16,14 @@ RSpec.describe User, type: :model do
     end
   end
   
-  context "User attributes" do
+  context "attributes" do
     let(:user) {User.create(username: "testuser", email: "testuser@exmaple.com", password: "test")}
     it "has a username" do
       expect(user.username).to eq("testuser")
     end
 
     it "has a email" do
-      expect(user.email).to eq("testuser@example.com")
+      expect(user.email).to eq("testuser@exmaple.com")
     end
 
     it "has a secure password" do
