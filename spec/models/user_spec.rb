@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-RSpec.describe User, type: model do
+RSpec.describe User, type: :model do
 
   context "validations" do
     it "is invalid without a username" do
-      expec(User.create(username: nil, email: ""))
+      expect(User.create(username: nil, email: "testuser@example.com", password: "test")).to_not be_valid
     end
   end
   
