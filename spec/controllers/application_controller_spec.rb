@@ -6,6 +6,7 @@ describe ApplicationController do
       get '/'
       expect(last_response.status).to eq(200)
       expect(last_response.body).to include("Welcome to Workout Tracker")
+      expect(last_response.body).should have_link("SignUp", href="/signup")
     end
   end
 end
