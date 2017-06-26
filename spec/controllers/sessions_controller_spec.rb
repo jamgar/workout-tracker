@@ -39,7 +39,40 @@ RSpec.describe SessionsController, type: :controller do
         password: "test2'"
       }
       post '/login', params
+      follow_redirect!
       expect(session[:user_id]).to eq(2)
+    end
+
+    it "displays the correct username based on the session[:user_id]" do
+      params = {
+        username: "testuser3",
+        password: "test3"
+      }
+      post '/login', params
+      follow_redirect!
+      expect(last_response.body).to include("Welcome testuser3")
+    end
+    
+    it "show an message if the username or password are not a valid user" do
+      params = {
+        username: "testuser4",
+        password: "xxx"
+      }
+      post '/login', params
+      expect(last_response.body).to include("The Username or Password is incorrect. Try again.")
+    end
+
+  end
+
+  describe "Log Out" do
+    it "displays a 'Log Out' link" do
+      params = {
+       username: "testuser1",
+        password: "test1"
+      }
+      post '/login', params
+      follow_redirect!
+      expect(last_response.body).to include('Log Out')
     end
   end
 end
