@@ -28,7 +28,8 @@ RSpec.describe SessionsController, type: :controller do
         password: "xxxxx"
       }
       post '/login', params
-      expect(last_response.body).to include("Incorrect username or password. Try again.")
+      expect(last_response.location).to include("/login")
+      expect(last_response.body).to include("Incorrect")
     end
 
     it 'load the workouts index page after login' do
@@ -64,8 +65,8 @@ RSpec.describe SessionsController, type: :controller do
         password: "test1"
       }
       post '/login', params
-      follow_redirect!
-      expect(last_response.body).to include('Log Out')
+      get '/logout'      
+      expect(last_response.location).to include('/login')
     end
   end
 end
