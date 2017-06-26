@@ -1,7 +1,11 @@
 class RegistrationsController < ApplicationController
 
   get '/signup' do
-    erb :'/signup/new'
+    if !logged_in?
+      erb :'/signup/new'
+    else
+      redirect to '/workouts'
+    end
   end
 
   post '/signup' do

@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
   get '/login' do
-    erb :'/session/index'
+    if !logged_in?
+      erb :'/session/index'
+    else
+      redirect to '/workouts'
+    end
   end
 
   post '/login' do
