@@ -29,7 +29,6 @@ RSpec.describe SessionsController, type: :controller do
       }
       post '/login', params
       expect(last_response.location).to include("/login")
-      expect(last_response.body).to include("Incorrect")
     end
 
     it 'load the workouts index page after login' do

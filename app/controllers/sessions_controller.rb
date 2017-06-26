@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect to '/workouts'
     else
-      flash[:message] = ""
+      flash[:message] = "Incorrect username or password. Try again."
       redirect to '/login'
     end
   end
