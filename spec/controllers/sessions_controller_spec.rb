@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe SessionsController, type: :controller do
   describe "Login Page" do
     before do
-      get '/'
+      get '/login'
     end
 
     it 'loads the login page' do
@@ -34,12 +34,13 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     it "sets session[:user_id] equal to id of the user" do
+      session.destroy
       params = {
         username: "testuser2",
         password: "test2'"
       }
       post '/login', params
-      follow_redirect!
+      #follow_redirect!
       expect(session[:user_id]).to eq(2)
     end
 
