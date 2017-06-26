@@ -57,6 +57,5 @@ RSpec.describe RegistrationsController, type: :controller do
       expect(last_request.path).to eq('/signup')
       expect(last_response.body).to include("All fields are required.")
     end
-
   end
 end
