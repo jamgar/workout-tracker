@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])      
       session[:user_id] = @user.id
-      binding.pry
       redirect to '/workouts'
     else
       flash[:message] = ""

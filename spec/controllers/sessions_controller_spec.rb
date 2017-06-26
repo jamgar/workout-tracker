@@ -19,50 +19,42 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "Sign In" do
     before do
-      @user1 = User.create(username: "testuser1", email: "testuser1@example.com", password: "test1")
-      @user2 = User.create(username: "testuser2", email: "testuser2@example.com", password: "test2")
-      @user3 = User.create(username: "testuser3", email: "testuser3@example.com", password: "test3")
+      @user = User.create(username: "testuser1", email: "testuser1@example.com", password: "test")
     end
 
-    it "returns a 302 redirect status code" do
+    it 'does not let user login with bad credentials' do
       params = {
         username: "testuser1",
-        password: "test1"
+        password: "xxxxx"
+      }
+      post '/login', params
+      expect(last_response.body).to include("Incorrect username or password. Try again.")
+    end
+
+    it 'load the workouts index page after login' do
+      params = {
+        username: "testuser1",
+        password: "test"
       }
       post '/login', params
       expect(last_response.status).to eq(302)
-    end
-
-    it "sets session[:user_id] equal to id of the user" do
-      session.destroy
-      params = {
-        username: "testuser2",
-        password: "test2'"
-      }
-      post '/login', params
-      #follow_redirect!
-      expect(session[:user_id]).to eq(2)
-    end
-
-    it "displays the correct username based on the session[:user_id]" do
-      params = {
-        username: "testuser3",
-        password: "test3"
-      }
-      post '/login', params
       follow_redirect!
-      expect(last_response.body).to include("Welcome testuser3")
+      expect(last_response.status).to eq(200)
+      expect(last_response.body).to include("Welcome,")
+    end
+
+    it 'does not let user view login page if already logged in' do
+      params = {
+        username: "testuser1",
+        password: "test"
+      }
+      post '/login', params
+      session = {}
+      session[:user_id] = @user.id
+      get '/login'
+      expect(last_response.location).to include("/workouts")
     end
     
-    it "show an message if the username or password are not a valid user" do
-      params = {
-        username: "testuser4",
-        password: "xxx"
-      }
-      post '/login', params
-      expect(last_response.body).to include("The Username or Password is incorrect. Try again.")
-    end
-
   end
 
   describe "Log Out" do
