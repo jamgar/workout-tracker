@@ -25,11 +25,11 @@ RSpec.describe Workout, type: :model do
     end
 
     it "can initialize a workout" do
-      expect(@workout.title).to eq(1)
+      expect(@workout.id).to eq(1)
     end
 
     it "belongs to user" do
-      expect(@workout.user_id).to eq(@user)
+      expect(@workout.user).to eq(@user)
     end
 
     it "has many exercises" do
