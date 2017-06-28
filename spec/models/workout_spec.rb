@@ -7,28 +7,33 @@ RSpec.describe Workout, type: :model do
       expect(Workout.create(title: nil, date: "06/12/2017")).to_not be_valid
     end
 
-    it "is invalid without a email" do
-      expect(User.create(username: "testuser", email: nil, password: "test")).to_not be_valid
-    end
-
-    it "is invalid without a password" do
-      expect(User.create(username: "testuser", email: "testuser@example.com", password: nil)).to_not be_valid
+    it "is invalid without a date" do      
+      expect(Workout.create(title: "Running", date: "")).to_not be_valid
     end
   end
   
   context "attributes" do
-#    let(:user) {User.create(username: "testuser", email: "testuser@exmaple.com", password: "test")}
-#    it "has a username" do
-#      expect(user.username).to eq("testuser")
-#    end
+    before do
+      @user = User.create(username: "testuser1", email: "testuser1@example.com", password: "test")
+      @workout = Workout.create(title: "Running", date: "06/12/2017", note: "Had a great run.", user: @user)
+      exercise1 = Exercise.create(name: "Running")
+      exercise2 = Exercise.create(name: "Yoga")
 
-#    it "has a email" do
-#      expect(user.email).to eq("testuser@exmaple.com")
-#    end
+      @workout.exercises << exercise1
+      @workout.exercises << exercise2
 
-#    it "has a secure password" do
-#      expect(user.authenticate("wrong")).to eq(false)
-#      expect(user.authenticate("test")).to eq(user)
-#    end
-#  end
+    end
+
+    it "can initialize a workout" do
+      expect(@workout.title).to eq(1)
+    end
+
+    it "belongs to user" do
+      expect(@workout.user_id).to eq(@user)
+    end
+
+    it "has many exercises" do
+      expect(@workout.exercises.count).to eq(2)
+    end
+  end
 end
