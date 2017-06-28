@@ -1,3 +1,7 @@
 !_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
 change	/home/james/code/workout-tracker/db/migrate/20170628115250_create_workouts.rb	/^  def change$/;"	f	language:Ruby	class:CreateWorkouts
+change	/home/james/code/workout-tracker/db/migrate/20170628121844_create_exercises.rb	/^  def change$/;"	f	language:Ruby	class:CreateExercises
+change	/home/james/code/workout-tracker/db/migrate/20170628122423_create_workout_exercises.rb	/^  def change$/;"	f	language:Ruby	class:CreateWorkoutExercises
+CreateExercises	/home/james/code/workout-tracker/db/migrate/20170628121844_create_exercises.rb	/^class CreateExercises < ActiveRecord::Migration[5.1]$/;"	c	language:Ruby
+CreateWorkoutExercises	/home/james/code/workout-tracker/db/migrate/20170628122423_create_workout_exercises.rb	/^class CreateWorkoutExercises < ActiveRecord::Migration[5.1]$/;"	c	language:Ruby
 CreateWorkouts	/home/james/code/workout-tracker/db/migrate/20170628115250_create_workouts.rb	/^class CreateWorkouts < ActiveRecord::Migration[5.1]$/;"	c	language:Ruby
