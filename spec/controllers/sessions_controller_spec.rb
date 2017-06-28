@@ -58,14 +58,16 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "Log Out" do
-    it "displays a 'Log Out' link" do
-      params = {
+    it "redirects to '/login' after lougout" do
+      user = User.create(username: "testuser1", email: "testuser1@example.com", password: "test1")
+       params = {
        username: "testuser1",
         password: "test1"
       }
-      post '/login', params
-      get '/logout'      
-      expect(last_response.location).to include('/login')
+      post '/login', params    
+      get '/logout'
+      follow_redirect!
+      expect(last_request.path_info).to eq("/login")
     end
   end
 end
