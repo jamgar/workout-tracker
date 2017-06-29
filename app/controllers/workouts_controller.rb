@@ -8,6 +8,16 @@ class WorkoutsController < ApplicationController
     erb :'/workouts/new'
   end
 
+  get '/workouts/:id' do
+    @workout = Workout.find_by(id: params[:id])
+    erb :'/workouts/show'
+  end
+
+  get '/workouts/:id/edit' do
+    @workout = Workout.find_by(id: params[:id])
+    erb :'/workouts/edit'
+  end
+
   post '/workouts' do
     @workout = Workout.create(title: params[:title], date: params[:date], duration: params[:duration], note: params[:note])
     @workout.exercise_ids = params[:exercises]
@@ -20,9 +30,7 @@ class WorkoutsController < ApplicationController
 
     redirect to "/workouts/#{@workout.id}"
   end
+  
+  
 
-  get '/workouts/:id' do
-    @workout = Workout.find_by(id: params[:id])
-    erb :'/workouts/show'
-  end
 end
