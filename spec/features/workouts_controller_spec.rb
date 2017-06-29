@@ -10,7 +10,7 @@ describe "Workout Forms" do
       exercise = Exercise.create(name: "Running")
       fill_in "title", with: "Hill Repteats"
       fill_in "date", with: "06/01/2017"
-      fill_in "duration(min)", with: 40
+      fill_in "duration", with: 40
       check exercise.name
       fill_in "note", "I am tired now."
       click_on "Create"
@@ -26,7 +26,7 @@ describe "Workout Forms" do
       expect {
         fill_in "title", with: "100s"
         fill_in "date", with: "06/01/2017"
-        fill_in "duration(min)", with: 40
+        fill_in "duration", with: 40
         fill_in "exercise", with: "Swimming"
         fill_in "note", "I swam at the gym."
         click_on "Create"
