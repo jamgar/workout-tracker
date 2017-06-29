@@ -3,22 +3,22 @@ require 'spec_helper'
 describe "Workout Forms" do
   describe "/workouts/new" do
     before do
+      @exercise = Exercise.create(name: "Running")
       visit '/workouts/new'
     end
 
     it "creates a new workout on submit" do
-      exercise = Exercise.create(name: "Running")
       fill_in "title", with: "Hill Repteats"
       fill_in "date", with: "06/01/2017"
       fill_in "duration", with: 40
-      check exercise.name
+      check @exercise.name
       fill_in "note", "I am tired now."
       click_on "Create"
 
       expect(page).to have_content("Hill Repeats")
       expect(page).to have_content("06/01/2017")
       expect(page).to have_content(40)
-      expect(page).to have_content(exercise.name)
+      expect(page).to have_content(@exercise.name)
       expect(page).to have_content("I am tired now.")
     end
 
