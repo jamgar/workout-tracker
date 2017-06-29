@@ -12,7 +12,7 @@ describe "Workout Forms" do
       fill_in "date", with: "06/01/2017"
       fill_in "duration", with: 40
       check @exercise.name
-      fill_in "note", "I am tired now."
+      fill_in "note", with: "I am tired now."
       click_on "Create"
 
       expect(page).to have_content("Hill Repeats")
@@ -28,7 +28,7 @@ describe "Workout Forms" do
         fill_in "date", with: "06/01/2017"
         fill_in "duration", with: 40
         fill_in "exercise", with: "Swimming"
-        fill_in "note", "I swam at the gym."
+        fill_in "note", with: "I swam at the gym."
         click_on "Create"
       }.to change(Exercise, :count).by(1)
     end
