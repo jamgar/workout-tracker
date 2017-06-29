@@ -33,4 +33,49 @@ describe "Workout Forms" do
       }.to change(Exercise, :count).by(1)
     end
   end
+
+  describe "/workouts/:id/edit" do
+    before do
+      @exercise = Exercise.create(name: "Swimming")
+      @workout = Workout.create(title: "Pool Swim", date: "06/01/2017", duration: 50, note: "Swam 100m X 10 at gym pool")
+
+      @workout.workout_exercises.create(exercise: @exercise)
+      @workout.save
+
+      visit "/workouts/#{@workout.id}/edit"
+    end
+
+    it "updates workout's title" do
+      fill_in "title", with: "Laps at Pool"
+      click_on "Update"
+
+      expect(page).to have_content("Successfully updated workout")
+      expect(page).to have_content("Laps at Pool")
+      expect(page).to have_content("Swimming")
+    end
+
+    it "has a checkbox element on the form" do
+      expect(page.body).to include("checkbox")
+    end
+
+    it "updates the exercises with existing exercise list" do
+      exercise2 = Exercise.create(name: "Running")
+      uncheck "Swimming"
+      check "Running"
+      click_on "Update"
+
+      expect(page).to have_content("Successfully updated workout")
+      expect(page).to have_content("Pool Swim")
+      expect(page).to have_content("Running")
+    end
+
+    it "creates and adds a new exercise to the workout" do
+      fill_in "exercise", with: "Weightlifting"
+      click_on "Update"
+
+      expect(page).to have_content("Successfully updated workout")
+      expect(page).to have_content("Swimming")
+      expect(page).to have_content("Weightlifting")
+    end
+  end
 end
