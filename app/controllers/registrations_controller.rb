@@ -15,7 +15,7 @@ class RegistrationsController < ApplicationController
       redirect to '/workouts'
     else
       flash[:message] = "All fields are required."
-      redirect to '/signup'        
+      redirect to '/signup'
     end
   end
 end
