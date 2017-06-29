@@ -1,0 +1,16 @@
+<h1>Workout <%= @workout.title %></h1>
+<p>Date: <%= @workout.date %></p>
+<p>Duration: <%= @workout.duration %></p>
+
+<ul>
+  <% @workout.exercises.each do |exercise| %>
+    <li><%= exercise.name %></li>
+  <% end %>
+</ul>
+
+<p>
+  <%= @workout.note %>
+</p>
+
+<a href="/workouts/<%= @workout.id %>">Edit</a>
+
