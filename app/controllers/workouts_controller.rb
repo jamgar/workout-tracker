@@ -10,13 +10,13 @@ class WorkoutsController < ApplicationController
 
   post '/workouts' do
     @workout = Workout.create(title: params[:title], date: params[:date], duration: params[:duration], note: params[:note])
-    #binding.pry
+
     @workout.exercise_ids = params[:exercises]
     @workout.save
 
     flash[:message] = "Workout was successfully created."
 
-    redirect to '/workouts/#{@workout.id}'
+    redirect to "/workouts/#{@workout.id}"
   end
 
   get '/workouts/:id' do

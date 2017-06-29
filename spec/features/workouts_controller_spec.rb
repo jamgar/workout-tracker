@@ -8,7 +8,7 @@ describe "Workout Forms" do
     end
 
     it "creates a new workout on submit" do
-      fill_in "title", with: "Hill Repteats"
+      fill_in "title", with: "Hill Repeats"
       fill_in "date", with: "06/01/2017"
       fill_in "duration", with: 40
       check @exercise.name
