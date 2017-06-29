@@ -33,7 +33,7 @@ RSpec.describe RegistrationsController, type: :controller do
       }
       post '/signup', params
       expect(last_request.path).to eq('/signup')
-      expect(last_response.body).to include("All fields are required.")
+      expect(last_response.location).to include('/signup')
     end
 
     it 'does not allow user to signup without a email' do
@@ -44,7 +44,7 @@ RSpec.describe RegistrationsController, type: :controller do
       }
       post '/signup', params
       expect(last_request.path).to eq('/signup')
-      expect(last_response.body).to include("All fields are required.")
+      expect(last_response.location).to include('/signup')
     end
 
     it 'does not allow user to signup without a password' do
@@ -55,7 +55,7 @@ RSpec.describe RegistrationsController, type: :controller do
       }
       post '/signup', params
       expect(last_request.path).to eq('/signup')
-      expect(last_response.body).to include("All fields are required.")
+      expect(last_response.location).to include('/signup')
     end
   end
 end
