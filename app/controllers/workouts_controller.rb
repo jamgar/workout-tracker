@@ -10,7 +10,8 @@ class WorkoutsController < ApplicationController
 
   post '/workouts' do
     @workout = Workout.create(title: params[:title], date: params[:date], duration: params[:duration], note: params[:note])
-    @workout.exercise_ids = param[:exercises]
+    #binding.pry
+    @workout.exercise_ids = params[:exercises]
     @workout.save
 
     flash[:message] = "Workout was successfully created."
