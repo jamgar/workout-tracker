@@ -16,7 +16,7 @@
   <p>
     <label>Exercise(s)</label>
     <% Exercise.all.each do |exercise| %>
-      <input id="<%= exercise.name>" type="checkbox" name="exercises[]" value="<%= exercise.id %>" >
+      <input id="<%= exercise.name %>" type="checkbox" name="exercises[]" value="<%= exercise.id %>"/>
     <% end %>
   </p>
 
