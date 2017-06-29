@@ -33,7 +33,14 @@ class WorkoutsController < ApplicationController
   
   patch '/workouts/:id' do
     @workout = Workout.find_by(id: params[:id])
-    #binding.pry
     @workout.update(params)
+    if !params[:exercise].empty?
+      @workout.exercises << Exercise.create(name: params[:exercise])
+    end
+    @workout.save
+
+    flash[:message] = "Successfully updated workout"
+
+    redirect to "/workouts/#{@workout.id}"
   end
 end
