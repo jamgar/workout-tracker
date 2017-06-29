@@ -36,10 +36,11 @@ describe "Workout Forms" do
 
   describe "/workouts/:id/edit" do
     before do
-      @exercise = Exercise.create(name: "Swimming")
+      exercise1 = Exercise.create(name: "Swimming")
+      exercise2 = Exercise.create(name: "Running")
       @workout = Workout.create(title: "Pool Swim", date: "06/01/2017", duration: 50, note: "Swam 100m X 10 at gym pool")
 
-      @workout.workout_exercises.create(exercise: @exercise)
+      @workout.workout_exercises.create(exercise: exercise1)
       @workout.save
 
       visit "/workouts/#{@workout.id}/edit"
@@ -59,7 +60,6 @@ describe "Workout Forms" do
     end
 
     it "updates the exercises with existing exercise list" do
-      exercise2 = Exercise.create(name: "Running")
       uncheck "Swimming"
       check "Running"
       click_on "Update"

@@ -31,6 +31,9 @@ class WorkoutsController < ApplicationController
     redirect to "/workouts/#{@workout.id}"
   end
   
-  
-
+  patch '/workouts/:id' do
+    @workout = Workout.find_by(id: params[:id])
+    #binding.pry
+    @workout.update(params)
+  end
 end
