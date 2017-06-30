@@ -6,5 +6,16 @@ class RegistrationsController < ApplicationController
       redirect to '/workouts'  
     end
   end
+
+  post '/signup' do
+    @user = User.new(params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect to '/workouts'
+    else
+      flash[:message] = "All fields are required."
+      redirect to '/signup'
+    end
+  end
   
 end
