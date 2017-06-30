@@ -9,4 +9,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "workout_secret"
     use Rack::Flash
   end
+
+  get '/' do
+    erb :index
+  end
 end
