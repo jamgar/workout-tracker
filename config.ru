@@ -7,4 +7,5 @@ end
 use Rack::MethodOverride
 use RegistrationsController
 use SessionsController
+use WorkoutsController
 run ApplicationController
