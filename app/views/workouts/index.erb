@@ -1,1 +1,9 @@
 <h1>Welcome, <%= current_user.username %></h1>
+
+<a href="/workouts/new">Add New Workout</a>
+
+<hr>
+<% @workouts.each do |workout| %>
+  <h4>Title: <a href="/workouts/<%= workout.id %>"><%= workout.title %></a></h4>
+  <p>Date: <%= workout.date %></p>
+<% end %>
