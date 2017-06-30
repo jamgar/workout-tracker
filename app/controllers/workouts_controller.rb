@@ -1,11 +1,20 @@
 class WorkoutsController < ApplicationController
   
   get '/workouts' do
-    erb :'/workouts/index'
+    if logged_in?
+      @workouts = Workout.find_by(user_id: session[:user_id])
+      erb :'/workouts/index'
+    else
+      redirect to '/login'
+    end
   end
 
   get '/workouts/new' do
-    erb :'/workouts/new'
+    if logged_in?
+      erb :'/workouts/new'
+    else
+      redirect to '/login'
+    end
   end
 
   get '/workouts/:id' do
@@ -14,8 +23,12 @@ class WorkoutsController < ApplicationController
   end
 
   get '/workouts/:id/edit' do
-    @workout = Workout.find_by(id: params[:id])
-    erb :'/workouts/edit'
+    if logged_in?
+      @workout = Workout.find_by(id: params[:id])
+      erb :'/workouts/edit'
+    else
+      redirect to '/login'
+    end
   end
 
   post '/workouts' do
