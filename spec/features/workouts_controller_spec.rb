@@ -1,13 +1,32 @@
 require 'spec_helper'
 
+describe "/workouts" do
+  it "does not let a user view the workouts index if not logged in" do
+    get '/workouts'
+    expect(last_response.location).to include("/login")
+  end
+
+end
+
 describe "Workout Forms" do
   describe "/workouts/new" do
     before do
+      @user = User.create(username: "testuser", email: "testuser@example.com", password: "test")
       @exercise = Exercise.create(name: "Running")
-      visit '/workouts/new'
+    end
+
+    it "does not let a user create a workout if not logged in" do
+      expect(last_response.location).to include("/login")
     end
 
     it "creates a new workout on submit" do
+      visit '/login'
+      fill_in "username", with: @user.username
+      fill_in "password", with: @user.password
+      click_on "Submit"
+
+
+      visit '/workouts/new'
       fill_in "title", with: "Hill Repeats"
       fill_in "date", with: "06/01/2017"
       fill_in "duration", with: 40
@@ -23,6 +42,12 @@ describe "Workout Forms" do
     end
 
     it "adds a new exercise on create a new workout" do
+      visit '/login'
+      fill_in "username", with: @user.username
+      fill_in "password", with: @user.password
+      click_on "Submit"
+
+      visit '/workouts/new'
       expect {
         fill_in "title", with: "100s"
         fill_in "date", with: "06/01/2017"
@@ -36,12 +61,18 @@ describe "Workout Forms" do
 
   describe "/workouts/:id/edit" do
     before do
+      @user = User.create(username: "testuser", email: "testuser@example.com", password: "test")
       exercise1 = Exercise.create(name: "Swimming")
       exercise2 = Exercise.create(name: "Running")
-      @workout = Workout.create(title: "Pool Swim", date: "06/01/2017", duration: 50, note: "Swam 100m X 10 at gym pool")
+      @workout = Workout.create(title: "Pool Swim", date: "06/01/2017", duration: 50, note: "Swam 100m X 10 at gym pool", user_id: @user.id)
 
       @workout.workout_exercises.create(exercise: exercise1)
       @workout.save
+
+      visit '/login'
+      fill_in "username", with: @user.username
+      fill_in "password", with: @user.password
+      click_on "Submit"
 
       visit "/workouts/#{@workout.id}/edit"
     end
@@ -77,5 +108,23 @@ describe "Workout Forms" do
       expect(page).to have_content("Swimming")
       expect(page).to have_content("Weightlifting")
     end
+
+    it "does not let a user edit another users workout" do
+      user2 = User.create(username: "testuser2", email: "testuser2@example.com", password: "test")
+      workout2 = Workout.create(title: "Cycling", date: "06/03/2017", duration: 90, note: "Rode at the park", user_id: user2.id)
+
+      session[:user_id] = @user.id
+      visit "/workouts/#{user2.id}/edit"
+      expect(page.current_path).to include('/workouts')
+    end
+
+    it "does not let a user view edit form if not logged in" do
+      visit '/logout'
+      visit "/workouts/1/edit"
+      expect(page.current_path).to include('/login')
+    end
   end
 end
+
+
+
