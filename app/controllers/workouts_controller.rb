@@ -2,7 +2,7 @@ class WorkoutsController < ApplicationController
   
   get '/workouts' do
     if logged_in?
-      @workouts = Workout.find_by(user_id: session[:user_id])
+      @workouts = Workout.where(user_id: session[:user_id])
       erb :'/workouts/index'
     else
       redirect to '/login'
@@ -32,7 +32,7 @@ class WorkoutsController < ApplicationController
   end
 
   post '/workouts' do
-    @workout = Workout.create(title: params[:title], date: params[:date], duration: params[:duration], note: params[:note])
+    @workout = Workout.create(title: params[:title], date: params[:date], duration: params[:duration], note: params[:note], user_id: session[:user_id])
     @workout.exercise_ids = params[:exercises]
     if !params[:exercise].empty?
       @workout.exercises << Exercise.create(name: params[:exercise])

@@ -3,7 +3,11 @@
 <a href="/workouts/new">Add New Workout</a>
 
 <hr>
-<% @workouts.each do |workout| %>
-  <h4>Title: <a href="/workouts/<%= workout.id %>"><%= workout.title %></a></h4>
-  <p>Date: <%= workout.date %></p>
+<% if @workouts %>
+  <% @workouts.each do |workout| %>
+    <h4>Title: <a href="/workouts/<%= workout.id %>"><%= workout.title %></a></h4>
+    <p>Date: <%= workout.date %></p>
+  <% end %>
+<% else %>
+  <p>You have no workouts.</p>
 <% end %>
