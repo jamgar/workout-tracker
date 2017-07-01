@@ -95,7 +95,7 @@ describe "Workout Forms" do
       check "Running"
       click_on "Update"
 
-      expect(page).to have_content("Successfully updated workout")
+      expect(page).to have_content("Successfully updated workout.")
       expect(page).to have_content("Pool Swim")
       expect(page).to have_content("Running")
     end
