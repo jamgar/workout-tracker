@@ -41,6 +41,8 @@ class WorkoutsController < ApplicationController
       @workout.exercises << Exercise.create(name: params[:exercise])
     end
     @workout.save
-    binding.pry
+
+    flash[:message] = "Workout was successfully created."
+    redirect to "/workouts/#{@workout.id}"
   end
 end
