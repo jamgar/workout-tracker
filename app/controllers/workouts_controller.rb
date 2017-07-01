@@ -33,4 +33,14 @@ class WorkoutsController < ApplicationController
       redirect to '/login'
     end
   end
+
+  post '/workouts' do
+    @workout = Workout.create(title: params[:title], date: params[:date], duration: params[:duration], note: params[:note], user_id: session[:user_id])
+    @workout.exercise_ids = params[:exercises]
+    if !params[:exercise].empty?
+      @workout.exercises << Exercise.create(name: params[:exercise])
+    end
+    @workout.save
+    binding.pry
+  end
 end
