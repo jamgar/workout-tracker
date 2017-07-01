@@ -1,0 +1,29 @@
+<h1>Edit Workout</h1>
+
+<form action="/workouts/<%= @workout.id %>" method="POST">
+  <input type="hidden" name="_method" value="patch" />
+  <p>
+    <label for="title">Title:</label>
+    <input type="text" name="title" value="<%= @workout.title %>" />
+  </p>
+  <p>
+    <label for="date">Date:</label>
+    <input type="text" name="date" value="<%= @workout.date %>" />
+  </p>
+  <p>
+    <label for="duration">Duration:</label>
+    <input type="text" name="duration" value="<%= @workout.duration %>" />
+  </p>
+  <p>
+  <label>Exercise(s)</label>
+    <% Exercise.all.each do |exercise| %>
+      <label><%= exercise.name %></label>
+      <input id="<%= exercise.name %>" type="checkbox" name="exercises[]" value="<%= exercise.id %>" <%= 'checked' if @workout.exercises.include?(exercise) %> />
+    <% end %>
+  </p>
+  <p>
+    <label for="exercise">and/or Add New Exercise:</label>
+    <input type="text" name="exercise" />
+  </p>
+  <input type="submit" value="Update" />
+</form>
