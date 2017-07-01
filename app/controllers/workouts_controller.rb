@@ -6,4 +6,12 @@ class WorkoutsController < ApplicationController
       redirect to '/login'
     end
   end
+
+  get '/workouts/new' do
+    if logged_in?
+      erb :'/workouts/new'
+    else
+      redirect to '/login'
+    end
+  end
 end
