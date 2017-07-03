@@ -1,17 +1,21 @@
+<header class="w3-container w3-teal">
+  <h1>Login</h1>
+</header>
 <% if flash.has?(:message) %>
+<div class="w3-panel w3-yellow">
   <p><%= flash[:message] %></p>
+</div>
 <% end %>
-
-<h1>Login</h1>
-
-<form action="/login" method="post">
+<div class="w3-container w3-half w3-margin-top">
+<form class="w3-container w3-card-4" action="/login" method="post">
    <p>
     <label for="username">Enter Username:</label>
-    <input type="text" name="username" id="username" />
+    <input class="w3-input" type="text" name="username" id="username" />
    </p>
    <p>
     <label for="password">Enter Password:</label>
-    <input type="password" name="password" id="password" />
+    <input class=w3-input type="password" name="password" id="password" />
    </p>
-   <input type="submit" value="Submit" />
+   <input class="w3-button w3-section w3-teal w3-ripple" type="submit" value="Submit" />
 </form>
+</div>
