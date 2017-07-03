@@ -1,13 +1,17 @@
-<h1>Welcome, <%= current_user.username %></h1>
+<header class="w3-container w3-teal">
+  <h1>Welcome, <%= current_user.username %></h1>
+</header>
 
-<a href="/workouts/new">Add New Workout</a>
+<div class="w3-container">
+  <a class="w3-button w3-section w3-teal w3-ripple" href="/workouts/new">Add New Workout</a>
 
-<hr>
-<% if @workouts %>
-  <% @workouts.each do |workout| %>
-    <h4>Title: <a href="/workouts/<%= workout.id %>"><%= workout.title %></a></h4>
-    <p>Date: <%= workout.date %></p>
+  <hr>
+  <% if @workouts %>
+    <% @workouts.each do |workout| %>
+      <h4>Title: <a href="/workouts/<%= workout.id %>"><%= workout.title %></a></h4>
+      <p>Date: <%= workout.date %></p>
+    <% end %>
+  <% else %>
+    <p>You have no workouts.</p>
   <% end %>
-<% else %>
-  <p>You have no workouts.</p>
-<% end %>
+</div>
