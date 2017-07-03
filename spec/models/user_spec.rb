@@ -1,5 +1,8 @@
 require 'spec_helper'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6
 RSpec.describe User, type: :model do
 
   context "validations" do

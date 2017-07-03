@@ -27,13 +27,20 @@ RSpec.configure do |config|
   end
 
   config.order = 'default'
+<<<<<<< HEAD
     
+=======
+>>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6
 end
 
 def app
   Rack::Builder.parse_file('config.ru').first
 end
 
+<<<<<<< HEAD
 Capybara.app = app
 
 
+=======
+Capybara.app = app
+>>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6

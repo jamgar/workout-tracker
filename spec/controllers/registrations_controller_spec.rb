@@ -58,4 +58,8 @@ RSpec.describe RegistrationsController, type: :controller do
       expect(last_response.location).to include('/signup')
     end
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6

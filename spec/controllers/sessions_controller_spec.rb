@@ -70,4 +70,8 @@ RSpec.describe SessionsController, type: :controller do
       expect(last_request.path_info).to eq("/login")
     end
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6

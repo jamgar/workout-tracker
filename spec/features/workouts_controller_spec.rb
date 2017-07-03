@@ -95,7 +95,11 @@ describe "Workout Forms" do
       check "Running"
       click_on "Update"
 
+<<<<<<< HEAD
       expect(page).to have_content("Successfully updated workout")
+=======
+      expect(page).to have_content("Successfully updated workout.")
+>>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6
       expect(page).to have_content("Pool Swim")
       expect(page).to have_content("Running")
     end
@@ -123,4 +127,7 @@ describe "Workout Forms" do
 end
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6

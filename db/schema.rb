@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170629112739) do
+=======
+ActiveRecord::Schema.define(version: 20170630221126) do
+>>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
@@ -30,11 +34,18 @@ ActiveRecord::Schema.define(version: 20170629112739) do
   create_table "workouts", force: :cascade do |t|
     t.string "title"
     t.string "date"
+<<<<<<< HEAD
+=======
+    t.integer "duration"
+>>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6
     t.text "note"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.integer "duration"
+=======
+>>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6
   end
 
 end
