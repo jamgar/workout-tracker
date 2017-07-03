@@ -48,7 +48,8 @@ class WorkoutsController < ApplicationController
 
   patch '/workouts/:id' do
     @workout = Workout.find_by(id: params[:id])
-    @workout.update(params)
+    @workout.update(title: params[:title], date: params[:date], duration: params[:duration], note: params[:note])
+    @workout.exercise_ids = params[:exercises]
     if !params[:exercise].empty?
       @workout.exercises << Exercise.create(name: params[:exercise])
     end
