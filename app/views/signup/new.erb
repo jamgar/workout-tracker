@@ -1,19 +1,27 @@
+<header class="w3-container w3-teal">
+  <h1>Sign Up for Workout Tracker</h1>
+</header>
 <% if flash.has?(:message) %>
+<div class="w3-panel w3-yellow">
   <p><%= flash[:message] %></p>
+</div>
 <% end %>
-<h1>Sign Up for Workout Tracker</h1>
-<form action="/signup" method="post">
-  <div>
-    <label for="username">Username</label>
-    <input type="text" name="username" />
-  </div>
-  <div>
-    <label for="email">Email</label>
-    <input type="email" name="email" />
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" />
-  </div>
-  <input type="submit" value="Submit">
-</form>
+
+<div class="w3-container w3-half w3-margin-top">
+  <form class="w3-container w3-card-4" action="/signup" method="post">
+
+    <p>
+     <label for="username">Username</label>
+     <input class="w3-input" type="text" name="username" />
+    </p>
+    </p>
+      <label for="email">Email</label>
+      <input class="w3-input" type="email" name="email" />
+    </p>
+    <p>
+      <label for="password">Password</label>
+      <input class="w3-input" type="password" name="password" />
+    </p>
+    <input class="w3-button w3-section w3-teal w3-ripple" type="submit" value="Submit">
+  </form>
+</div>
