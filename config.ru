@@ -5,12 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-<<<<<<< HEAD
 use SessionsController
 use RegistrationsController
-=======
-use RegistrationsController
-use SessionsController
->>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6
 use WorkoutsController
 run ApplicationController

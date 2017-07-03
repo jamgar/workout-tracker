@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <header class="w3-container w3-teal">
   <h1>New Workout</h1>
 </header>
@@ -16,38 +15,16 @@
   <p>
     <label for="duration">Duration(min):</label>
     <input class="w3-input" type="text" name="duration" />
-=======
-<h1>New Exercise</h1>
-
-<form action="/workouts" method="post">
-  <p>
-    <label for="title">Title:</label>
-    <input type="text" name="title" />
-  </p>
-  <p>
-    <label for="date">Date:</label>
-    <input type="text" name="date" />
-  </p>
-  <p>
-    <label for="duration">Duration(min):</label>
-    <input type="text" name="duration" />
->>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6
   </p>
   <p>
     <label>Exercise(s)</label>
     <% Exercise.all.each do |exercise| %>
-<<<<<<< HEAD
       <input class="w3-check" id="<%= exercise.name %>" type="checkbox" name="exercises[]" value="<%= exercise.id %>"/>
       <label><%= exercise.name %></label>
-=======
-      <label><%= exercise.name %></label>
-      <input id="<%= exercise.name %>" type="checkbox" name="exercises[]" value="<%= exercise.id %>"/>
->>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6
     <% end %>
   </p>
   <p>
     <label for="exercise">and/or Add New Exercise:</label>
-<<<<<<< HEAD
     <input class="w3-input" type="text" name="exercise" />
   </p>
   <p>
@@ -58,13 +35,3 @@
 </form>
 
 </div>
-=======
-    <input type="text" name="exercise" />
-  </p>
-  <p>
-    <label for="note">Note:</label>
-    <textarea name="note"></textarea>
-  </p>
-  <input type="submit" value="Create" />
-</form>
->>>>>>> 171eec4562459fba1ab3c037033c39c6d7f49da6
