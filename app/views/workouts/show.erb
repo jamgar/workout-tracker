@@ -11,7 +11,7 @@
   <p><strong>Date: </strong><%= @workout.date %></p>
   <p><strong>Duration: </strong><%= @workout.duration %></p>
   <p><strong>Exercise(s):</strong></p>
-  <ul class="w3-ul w3-border">
+  <ul class="w3-ul w3-border" style="width:50%">
     <% @workout.exercises.each do |exercise| %>
       <li><%= exercise.name %></li>
     <% end %>
