@@ -1,18 +1,25 @@
-<% if flash.has?(:message) %>
-  <p><%= flash[:message] %></p>
-<% end %>
+<header class="w3-container w3-teal">
 <h1>Workout <%= @workout.title %></h1>
-<p>Date: <%= @workout.date %></p>
-<p>Duration: <%= @workout.duration %></p>
+</header>
 
-<ul>
-  <% @workout.exercises.each do |exercise| %>
-    <li><%= exercise.name %></li>
-  <% end %>
-</ul>
+<div class="w3-content">
+<% if flash.has?(:message) %>
+  <div class="w3-panel w3-yellow">
+  <p><%= flash[:message] %></p>
+  </div>
+<% end %>
+  <p><strong>Date: </strong><%= @workout.date %></p>
+  <p><strong>Duration: </strong><%= @workout.duration %></p>
+  <p><strong>Exercise(s):</strong></p>
+  <ul class="w3-ul w3-border">
+    <% @workout.exercises.each do |exercise| %>
+      <li><%= exercise.name %></li>
+    <% end %>
+  </ul>
+  <p><strong>Note:</strong></p>
+  <p>
+    <%= @workout.note %>
+  </p>
 
-<p>
-  <%= @workout.note %>
-</p>
-
-<a href="/workouts/<%= @workout.id %>/edit">Edit</a>
+  <a class="w3-button w3-section w3-teal w3-ripple" href="/workouts/<%= @workout.id %>/edit">Edit</a>
+</div>
