@@ -1,32 +1,37 @@
-<h1>New Exercise</h1>
+<header class="w3-container w3-teal">
+  <h1>New Workout</h1>
+</header>
 
+<div class="w3-container w3-half w3-margin-top">
 <form action="/workouts" method="post">
   <p>
     <label for="title">Title:</label>
-    <input type="text" name="title" />
+    <input class="w3-input" type="text" name="title" />
   </p>
   <p>
     <label for="date">Date:</label>
-    <input type="text" name="date" />
+    <input class="w3-input" type="text" name="date" />
   </p>
   <p>
     <label for="duration">Duration(min):</label>
-    <input type="text" name="duration" />
+    <input class="w3-input" type="text" name="duration" />
   </p>
   <p>
     <label>Exercise(s)</label>
     <% Exercise.all.each do |exercise| %>
-      <input id="<%= exercise.name %>" type="checkbox" name="exercises[]" value="<%= exercise.id %>"/>
+      <input class="w3-check" id="<%= exercise.name %>" type="checkbox" name="exercises[]" value="<%= exercise.id %>"/>
+      <label><%= exercise.name %></label>
     <% end %>
   </p>
   <p>
     <label for="exercise">and/or Add New Exercise:</label>
-    <input type="text" name="exercise" />
+    <input class="w3-input" type="text" name="exercise" />
   </p>
   <p>
     <label for="note">Note:</label>
-    <textarea name="note"></textarea>
+    <textarea class="w3-input" name="note"></textarea>
   </p>
-  <input type="submit" value="Create" />
+  <input class="w3-button w3-section w3-teal w3-ripple" type="submit" value="Create" />
 </form>
 
+</div>
