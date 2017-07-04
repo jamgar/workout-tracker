@@ -30,8 +30,9 @@
   </p>
   <P>
     <label for="note">Note:</label>
-    <textarea class="w3-input" name="note"></textarea>
+    <textarea class="w3-input" name="note"><%= @workout.note %></textarea>
   </P>
   <input class="w3-button w3-section w3-teal w3-ripple" type="submit" value="Update" />
+  <a href="/workouts/<%= @workout.id %>" class="w3-button w3-light-grey">Cancel</a>
 </form>
 </div>
