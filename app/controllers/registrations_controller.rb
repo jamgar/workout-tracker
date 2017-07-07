@@ -9,7 +9,7 @@ class RegistrationsController < ApplicationController
 
   post '/signup' do
     @user = User.new(username: params[:username], email: params[:email], password: params[:password])
-    @user = User.new(params)
+    #@user = User.new(params)
     if @user.save
       session[:user_id] = @user.id
       redirect to '/workouts'
