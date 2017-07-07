@@ -22,4 +22,8 @@
   </p>
 
   <a class="w3-button w3-section w3-teal w3-ripple" href="/workouts/<%= @workout.id %>/edit">Edit</a>
+  <form action="/workouts/<%= @workout.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button class="w3-button w3-section w3-light-grey w3-ripple" type="submit" name="button">Delete</button>
+  </form>
 </div>

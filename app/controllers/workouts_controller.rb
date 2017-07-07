@@ -61,4 +61,11 @@ class WorkoutsController < ApplicationController
     flash[:message] = "Successfully updated workout."
     redirect to "/workouts/#{@workout.id}"    
   end
+
+  delete '/workouts/:id/delete' do
+    @workout = Workout.find_by(id: param[:id])
+    @workout.delete
+    flash[:message] = "Workout was deleted"
+    redirect to "/workouts"
+  end
 end
