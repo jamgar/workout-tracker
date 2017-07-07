@@ -1,0 +1,13 @@
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card-2" style="letter-spacing:4px;">
+    <a href="/" class="w3-bar-item w3-button">Workout Tracker</a>
+    <div class="w3-right">
+      <% if !logged_in? %>
+      <a href="/login" class="w3-bar-item w3-button">Log In</a>
+      <a href="/signup" class="w3-bar-item w3-button">Sign Up</a>
+      <% else %>
+      <a href="/logout" class="w3-bar-item w3-button">Log Out</a>
+      <% end %>
+    </div>
+  </div>
+</div>
